@@ -1,3 +1,5 @@
+using DesignPattern.CQRS.PresentationLayer.CQRS.Handlers;
+using DesignPattern.CQRS.PresentationLayer.DAL.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +25,9 @@ namespace DesignPattern.CQRS.PresentationLayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();
+            services.AddScoped<GetProductProducerQueryHandler>();
+            services.AddScoped<GetProductPlannerQueryHandler>();
             services.AddControllersWithViews();
         }
 

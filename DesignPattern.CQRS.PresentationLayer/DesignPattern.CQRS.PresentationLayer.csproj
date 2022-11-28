@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="CQRS\Commands\" />
-    <Folder Include="CQRS\Handlers\" />
-    <Folder Include="CQRS\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
 </Project>
