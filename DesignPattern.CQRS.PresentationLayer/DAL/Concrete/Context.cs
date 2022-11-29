@@ -10,5 +10,6 @@ namespace DesignPattern.CQRS.PresentationLayer.DAL.Concrete
             optionsBuilder.UseSqlServer("server=DESKTOP-O6Q5UAT;initial catalog=CQRSDb; User Id=sa;Password=1234;");
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Person> Persons { get; set; }
     }
 }
