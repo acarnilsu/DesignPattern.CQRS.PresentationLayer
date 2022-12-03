@@ -1,12 +1,17 @@
 ﻿@model List<GetPersonHumanResourceQueryResult>
+
 @{
     Layout = null;
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
+
+
 <div class="container" style="margin-top:50px">
-    <table class="table table-bordered">
+    <a asp-action="AddPerson" asp-controller="Person" class="btn btn-primary">Ekle</a>
+    <br />
+    <table class="table table-bordered mt-3">
         <tr>
             <th>#</th>
             <th>Ad</th>
@@ -15,20 +20,28 @@
             <th>Departman</th>
             <th>Telefon</th>
             <th>Mail</th>
+            <th>İşlemler</th>
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>@item.PersonID</td>
-                <td>@item.Name</td>
-                <td>@item.Surname</td>
-                <td>@item.City</td>
-                <td>@item.Department</td>
-                <td>@item.Phone</td>
-                <td>@item.Mail</td>
-            </tr>
+                <tr>
+                    <td>@item.PersonID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.City</td>
+                    <td>@item.Department</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Mail</td>
+                    <td>
+                        <a asp-action="UpdatePerson" asp-controller="Person" asp-route-id=@item.PersonID class="btn btn-success">Düzenle</a>
+
+                        <a asp-action="DeletePerson" asp-controller="Person" asp-route-id=@item.PersonID class="btn btn-danger">Sil</a>
+
+                    </td>
+                </tr>
         }
     </table>
 </div>
+
 
 

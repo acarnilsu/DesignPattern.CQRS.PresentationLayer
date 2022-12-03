@@ -10,12 +10,16 @@ namespace DesignPattern.CQRS.PresentationLayer.Controllers
         private readonly GetPersonHumanResourceQueryHandler _getPersonHumanResourceQueryHandler;
         private readonly GetPersonByIDQueryHandler _getPersonByIDQueryHandler;
         private readonly CreatePersonHandler _createPersonHandler;
+        private readonly DeletePersonHandler _deletePersonHandler;
+        private readonly UpdatePersonHandler _updatePersonHandler;
 
-        public PersonController(GetPersonHumanResourceQueryHandler getPersonHumanResourceQueryHandler, GetPersonByIDQueryHandler getPersonByIDQueryHandler, CreatePersonHandler createPersonHandler)
+        public PersonController(GetPersonHumanResourceQueryHandler getPersonHumanResourceQueryHandler, GetPersonByIDQueryHandler getPersonByIDQueryHandler, CreatePersonHandler createPersonHandler, DeletePersonHandler deletePersonHandler, UpdatePersonHandler updatePersonHandler)
         {
             _getPersonHumanResourceQueryHandler = getPersonHumanResourceQueryHandler;
             _getPersonByIDQueryHandler = getPersonByIDQueryHandler;
             _createPersonHandler = createPersonHandler;
+            _deletePersonHandler = deletePersonHandler;
+            _updatePersonHandler = updatePersonHandler;
         }
 
         public IActionResult Index()
@@ -42,5 +46,28 @@ namespace DesignPattern.CQRS.PresentationLayer.Controllers
             _createPersonHandler.Handle(command);
             return RedirectToAction("Index");
         }
+
+
+        public IActionResult DeletePerson(int id)
+        {
+            _deletePersonHandler.Handle(new DeletePersonCommand(id));
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpGet]
+        public IActionResult UpdatePerson(int id)
+        {
+            var values = _updatePersonHandler.FindPerson(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePerson(UpdatePersonCommand command)
+        {
+            _updatePersonHandler.Handle(command);
+            return RedirectToAction("Index");
+        }
+
     }
 }

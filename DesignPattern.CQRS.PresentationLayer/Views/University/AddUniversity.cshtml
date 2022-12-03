@@ -1,0 +1,22 @@
+﻿@model DesignPattern.CQRS.PresentationLayer.CQRS.Commands.UniversityCommands.CreateUniversityCommand
+@{
+    Layout = null;
+}
+
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<br />
+
+<div class="container">
+    <form method="post">
+        <label>Üniversite Adı</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <br />
+        <label>Üniversite Öğrenci Sayısı</label>
+        <input type="text" class="form-control" asp-for="Population" />
+        <br />
+        <button class="btn btn-outline-primary">Üniversiteyi Ekle</button>
+    </form>
+</div>
+
