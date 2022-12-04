@@ -2,6 +2,7 @@ using DesignPattern.CQRS.PresentationLayer.CQRS.Handlers;
 using DesignPattern.CQRS.PresentationLayer.CQRS.Handlers.PersonHandlers;
 using DesignPattern.CQRS.PresentationLayer.CQRS.Handlers.UniversityHandlers;
 using DesignPattern.CQRS.PresentationLayer.DAL.Concrete;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,6 +45,10 @@ namespace DesignPattern.CQRS.PresentationLayer
             services.AddScoped<RemoveUniversityHandler>();
             services.AddScoped<GetUniversityUpdateByIDQueryHandler>();
             services.AddScoped<UpdateUniversityHandler>();
+
+
+            services.AddMediatR(typeof(Startup));
+
             services.AddControllersWithViews();
         }
 

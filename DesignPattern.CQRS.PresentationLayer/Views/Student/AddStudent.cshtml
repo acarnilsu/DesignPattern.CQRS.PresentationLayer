@@ -1,0 +1,19 @@
+﻿@model DesignPattern.CQRS.PresentationLayer.CQRS.Commands.StudentCommands.CreateStudentCommand
+
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<div class="container">
+    <form method="post">
+        <label>Adınız</label>
+        <input type="text" class="form-control" asp-for="Name" />
+        <br />
+        <label>Soyadınız</label>
+        <input type="text" class="form-control" asp-for="Surname" />
+        <br />
+        <button class="btn btn-outline-primary">Öğrenciyi Ekle</button>
+    </form>
+</div>
